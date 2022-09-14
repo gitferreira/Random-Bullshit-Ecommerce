@@ -6,17 +6,21 @@ const Header = () => {
   return (
     <header className={styles.header}>
         <div className="contenedor">
-            <div>
-                <Image width={200} height={200} src="/img/random.png"  alt="logo"/>
-            </div>
+           <div className={styles.bar}>
+           <Link href="/">
+            <a> 
+                <Image width={300} height={300} src="/img/logo-random.png"  alt="logo"/>
+                </a>
+            </Link>
 
-            <nav>
+            <nav className={styles.navigation}>
                 <Link href="/">Home</Link>
                 <Link href="/aboutUs">About Us</Link>
                 <Link href="/blog">Blog</Link>
                 <Link href="/shop">Shop</Link>
 
             </nav>
+           </div>
         </div>
     </header>
   )
