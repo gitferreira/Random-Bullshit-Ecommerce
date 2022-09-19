@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 const Entry = ({entry}) => {
-    const {heading, summary, image, published_at, id } = entry
+    const {heading, summary, image, published_at, id, url } = entry
   return (
     <article>
 
@@ -13,7 +13,7 @@ const Entry = ({entry}) => {
         <h3 className={styles.title}>{heading}</h3>
         <p className={styles.date}>{formatDate(published_at)}</p>
         <p className={styles.summary}>{summary}</p>
-        <Link href={`/blog/${id}`}>
+        <Link href={`/blog/${url}`}>
             <a className={styles.link}>Read More</a>
         </Link>
 

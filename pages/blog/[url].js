@@ -8,7 +8,7 @@ const BlogEntry = ({entry}) => {
     const router = useRouter()
     const {content, image, published_at, heading} = entry
   return (
-    <Layout> 
+    <Layout page={heading}> 
     <main className='contenedor'>
         <h1 className='heading'>
             {heading}
@@ -18,7 +18,7 @@ const BlogEntry = ({entry}) => {
     <div className={styles.contenido}>
         <p className={styles.date}>{formatDate(published_at)}</p>
         <p className={styles.text}>{content}</p>
-
+np
     </div>
         </article>
     </main>
@@ -51,7 +51,7 @@ export async function getStaticPaths() {
     const entries = await response.json()
 
     const paths = entries.map(entry => ({
-        params: { id: entry.id.toString()}
+        params: { url: entry.url}
     }))
 
     return {
@@ -61,17 +61,17 @@ export async function getStaticPaths() {
     }
 }
 
-export async function getStaticProps({params: {id}}) {
+export async function getStaticProps({params: {url}}) {
 
-    const url = `${process.env.API_URL}/blogs/${id}`;
+    const urlBlog = `${process.env.API_URL}/blogs?url=${url}`;
     console.log(url)
-    const response = await fetch(url);
+    const response = await fetch(urlBlog);
     const entry = await response.json();
     console.log(entry)
 
 return {
     props: {
-entry
+entry : entry[0]
     }
 }
 }
